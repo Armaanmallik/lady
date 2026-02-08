@@ -1,0 +1,142 @@
+<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine 💘</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffccd5, #ffe5ec);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 25px;
+      text-align: center;
+      width: 90%;
+      max-width: 320px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+    .koala {
+      font-size: 60px;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    h2 {
+      margin: 15px 0 25px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 12px 28px;
+      font-size: 16px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background: #ddd;
+      position: fixed; /* IMPORTANT */
+      z-index: 10;
+    }
+
+    .shy-text {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <div class="koala">🐨💖</div>
+
+    <h2>
+      Ladyfinger,<br>
+      will you be my Valentine? 💘
+    </h2>
+
+    <div class="buttons">
+      <button id="yes">Yes ❤️</button>
+      <!-- No button starts near Yes -->
+      <button id="no">No</button>
+    </div>
+
+    <div class="shy-text">No seems shy</div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+
+    function moveNoButton() {
+      const padding = 20;
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - padding);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - padding);
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    // For desktop + Android touch
+    noBtn.addEventListener("mouseenter", moveNoButton);
+    noBtn.addEventListener("touchstart", moveNoButton);
+    noBtn.addEventListener("click", moveNoButton);
+
+    yesBtn.addEventListener("click", () => {
+      document.body.innerHTML = `
+        <div style="
+          height:100vh;
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          align-items:center;
+          background:#ffb3c6;
+          font-family:Arial;
+          text-align:center;
+          padding:20px;
+        ">
+          <div style="font-size:32px;">Yayyy 💖</div>
+          <div style="margin-top:10px;font-size:20px;">
+            Forgot your rose yesterday
+          </div>
+          <div style="font-size:80px;margin-top:20px;">🌹</div>
+          <div style="font-size:26px;margin-top:10px;">
+            Love You So Muchhhhh!
+          </div>
+        </div>
+      `;
+    });
+  </script>
+
+</body>
+</html>
